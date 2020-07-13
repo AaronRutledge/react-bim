@@ -1,0 +1,10 @@
+As an introduction to the app, we need to differentiate between self-contained component and multi-dimensional components. Start small with a simple component which will then make it easier on us to pass things from REACT to Forge to Revit.
+
+Write a webpage that allows, the creation of levels. We need to prioritize that the code will be driving the building rather than us building a user interface. The purpose of this hack would be a Building model that can be coded in react and exported to XML/JSON. Not necessarily writing a gui that each person could control for the
+
+We will need some functions in react in the medium term.
+react tab for floor (rectangle, div level);
+react tab for level (plane, height);
+react tab for wall (point, point);
+
+Micah starts to work on XML contract between the REACT layer and FORGE. This will then establish what is needed from REACT and gives us an idea of what is needed to bring in to FORGE that is then passed over to the REVIT Addin.
