@@ -1,0 +1,25 @@
+<Building>
+<ProjectInformation></ProjectInformation>
+	<Units>
+		<!-- Boolean -->
+		<IsMetric></IsMetric>
+	</Units>
+	<!-- An internal coordinate system is set and not modifiable.-->
+	<!-- Multiple CoordinateSystem would be allowed; this gives the ability to name different systems and shows different measurements as the designer requires-->
+	<CoordinateSystem>
+		<!-- Id is not nullable-->
+		<Id>Guid</Id>
+		<Name>"null"</Name>
+	</CoordinateSystem>
+	<!-- Multiple levels are available-->
+	<!-- Two levels cannot contain the same elevation height or the same name-->
+	<Level>
+		<Id>Guid</Id>
+		<Elevation>double</Elevation>
+		<Name>string</Name>
+	</Level>
+	<Floor>
+		<Level>Guid</Level>
+		<Curve></Curve>
+	</Floor>
+</Building>
