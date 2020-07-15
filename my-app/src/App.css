@@ -1,5 +1,12 @@
 .App {
-  text-align: center;
+  width:100%;
+  height:100%;
+  position:fixed;
+}
+
+.ForgeViewer{
+  width:500px;
+  height:500px;
 }
 
 .App-logo {
