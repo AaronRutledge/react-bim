@@ -10,7 +10,7 @@
 			<Id>Guid</Id>
 			<Name>"null"</Name>
 			<OriginPointFromMaster>
-			<!-- Origin tranformation from master coordinate system -->
+				<!-- Origin tranformation from master coordinate system -->
 				<Point>
 					<X>double</X>
 					<Y>double</Y>
@@ -29,62 +29,63 @@
 						<Z>double</Z>
 					</Point>
 					<Radians>double</Radians>
-				</OriginPointFromMaster>
-			</CoordinateSystem>
-			<GridSystem>
-				<!-- Id is not nullable-->
-				<Id>Guid</Id>
+				</Rotation>
+			</OriginPointFromMaster>
+		</CoordinateSystem>
+		<GridSystem>
+			<!-- Id is not nullable-->
+			<Id>Guid</Id>
+			<Name>string</Name>
+			<Grid>
 				<Name>string</Name>
-				<Grid>
-					<Name>string</Name>
-					<Point>
-						<X>double</X>
-						<Y>double</Y>
-						<Z>double</Z>
-					</Point>
-					<Point>
-						<X>double</X>
-						<Y>double</Y>
-						<Z>double</Z>
-					</Point>
-				</Grid>
-			</GridSystem>
+				<Point>
+					<X>double</X>
+					<Y>double</Y>
+					<Z>double</Z>
+				</Point>
+				<Point>
+					<X>double</X>
+					<Y>double</Y>
+					<Z>double</Z>
+				</Point>
+			</Grid>
+		</GridSystem>
 
-			<!-- Multiple levels are available-->
-			<!-- Two levels cannot contain the same elevation height or the same name-->
-			<Levels>
-				<Level>
-					<Elevation>double</Elevation>
-					<Name>string</Name>
-				</Level>
-			</Levels>
-		</ProjectInformation>
-		<Floors>
-			<Floor>
-				<ComponentName>string</ComponentName>
-				<BoundryPoints>
-					<Point>
-						<X>double</X>
-						<Y>double</Y>
-						<Z>double</Z>
-					</Point>
-				</BoundryPoints>
-			</Floor>
-		</Floors>
-		<Walls>
-			<Wall>
-				<ComponentName>string</ComponentName>
-				<StartPoint>
+		<!-- Multiple levels are available-->
+		<!-- Two levels cannot contain the same elevation height or the same name-->
+		<Levels>
+			<Level>
+				<Elevation>double</Elevation>
+				<Name>string</Name>
+			</Level>
+		</Levels>
+	</ProjectInformation>
+	<Floors>
+		<Floor>
+			<ComponentName>string</ComponentName>
+			<BoundryPoints>
+				<Point>
 					<X>double</X>
 					<Y>double</Y>
 					<Z>double</Z>
-				</StartPoint>
-				<EndPoint>
-					<X>double</X>
-					<Y>double</Y>
-					<Z>double</Z>
-				</EndPoint>
-				<Height>double</Height>
-			</Wall>
-		</Walls>
-	</Building>
+				</Point>
+			</BoundryPoints>
+		</Floor>
+	</Floors>
+	<Walls>
+		<Wall>
+			<ComponentName>string</ComponentName>
+			<StartPoint>
+				<X>double</X>
+				<Y>double</Y>
+				<Z>double</Z>
+			</StartPoint>
+			<EndPoint>
+				<X>double</X>
+				<Y>double</Y>
+				<Z>double</Z>
+			</EndPoint>
+			<Height>double</Height>
+		</Wall>
+	</Walls>
+</Building>

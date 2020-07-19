@@ -1,0 +1,86 @@
+{
+   "ProjectInformation": {
+      "Units": {
+         "IsMetric": "bool"
+      },
+      "CoordinateSystem": {
+         "Id": "Guid",
+         "Name": "null",
+         "OriginPointFromMaster": {
+            "Point": {
+               "X": "double",
+               "Y": "double",
+               "Z": "double"
+            },
+            "Rotation": {
+               "Point": [
+                  {
+                     "X": "double",
+                     "Y": "double",
+                     "Z": "double"
+                  },
+                  {
+                     "X": "double",
+                     "Y": "double",
+                     "Z": "double"
+                  }
+               ],
+               "Radians": "double"
+            }
+         }
+      },
+      "GridSystem": {
+         "Id": "Guid",
+         "Name": "string",
+         "Grid": {
+            "Name": "string",
+            "Point": [
+               {
+                  "X": "double",
+                  "Y": "double",
+                  "Z": "double"
+               },
+               {
+                  "X": "double",
+                  "Y": "double",
+                  "Z": "double"
+               }
+            ]
+         }
+      },
+      "Levels": {
+         "Level": {
+            "Elevation": "double",
+            "Name": "string"
+         }
+      }
+   },
+   "Floors": {
+      "Floor": {
+         "ComponentName": "string",
+         "BoundryPoints": {
+            "Point": {
+               "X": "double",
+               "Y": "double",
+               "Z": "double"
+            }
+         }
+      }
+   },
+   "Walls": {
+      "Wall": {
+         "ComponentName": "string",
+         "StartPoint": {
+            "X": "double",
+            "Y": "double",
+            "Z": "double"
+         },
+         "EndPoint": {
+            "X": "double",
+            "Y": "double",
+            "Z": "double"
+         },
+         "Height": "double"
+      }
+   }
+}
