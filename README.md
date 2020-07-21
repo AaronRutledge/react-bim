@@ -26,23 +26,23 @@ It has taken the web development community a couple decades of development to so
 
 ## What about IFC and other open standards?  Isn’t that the common language modeling programs should use?
 
-IFC is a fine standard to describe a completed static building or building component.  It is not dynamic and it is also highly prescriptive of 3D geometry, which is not the core problem that I see needs to be solved.  The problem I am more interested in solving is developing a framework that helps define how the data between components is related.  I think IFC is analogous to HTML on the web.  While you can describe any web page as an HTML document, it is extremely tedious to do so directly.  This is why dynamic languages such as javascript and frameworks such as React were born.  React still renders to HTML.  Likewise, react-bim could render to IFC.
+IFC is a fine standard to describe a completed static building or building component.  It is not dynamic and it is also highly prescriptive of 3D geometry, which is not the core problem that I see needs to be solved.  The problem we are solving is developing a framework that helps define how the data between components is related.  I think IFC is analogous to HTML on the web.  While you can describe any web page as an HTML document, it is extremely tedious to do so directly.  This is why dynamic languages such as javascript and frameworks such as React were born.  React still renders to HTML.  Likewise, react-bim could render to IFC.
 
 
 ## Do you want architects to become programmers?
 
-No!  At least not all of them.  I am not for the obsolescence of architectural modeling programs.  I believe a graphically rich environment is the best way to model a building.  I am advocating for a new tool and a new type of AEC professional that can advance the way building components are described and interact within the application.  The initial adoption of ‘react-BIM’ can be isolated to individual building components that have hooks to the hosting application that allow an architect to model a building component that the react-bim application renders and delivers to the hosted application as an asset for integration in the coordinated BIM model.  With wide adoption of a technology such as this, I think there could be a lot more interoperability between platforms and vendors of building components and accelerate innovation.
+No!  At least not all of them.  A graphically rich environment is the best way to model a building.  This project advocates for a new tool and a new type of AEC professional that can advance the way building components are described and interact within the application.  The initial adoption of ‘react-BIM’ can be isolated to individual building components that have hooks to the hosting application that allow an architect to model a building component that the react-bim application renders and delivers to the hosted application as an asset for integration in the coordinated BIM model.  With wide adoption of a technology such as this, there could be a lot more interoperability between platforms and vendors of building components and accelerate innovation.
 
 
 ## How will this work exactly?
 
 This is where you come in!
 
-The building blocks of the framework will consist of parametrically configurable components that can be nested to form a building component (such as a stair system) or an entire building assembly.  Basic generic building component primitives would be available as part of the framework.  However, I think authoring of more complex components is usually more efficiently done in a CAD program.  Components authored in a CAD program (such as Inventor or as a Revit family) would need to be ‘registered’ by the framework to capture all of the driving parameters and component details.  Once registered, the components would then be able to be used as a tag in the framework and driven by the state of the application.  Each component would need to inherit a set of basic parameters that would be common to all components of that type.  For example, a wall component would have required placement detail parameters (referred to as props in React) such as wall start and stop data and thickness and type data.  The framework can also impose what type of children a particular component can have.  This is enforceable by the React PropTypes library: [https://reactjs.org/docs/typechecking-with-proptypes.html](https://reactjs.org/docs/typechecking-with-proptypes.html)
+The building blocks of the framework will consist of parametrically configurable components that can be nested to form a building component (such as a stair system) or an entire building assembly.  Basic generic building component primitives would be available as part of the framework.  However, authoring of more complex components is usually more efficiently done in a CAD program.  Components authored in a CAD program (such as Inventor or as a Revit family) would need to be ‘registered’ by the framework to capture all of the driving parameters and component details.  Once registered, the components would then be able to be used as a tag in the framework and driven by the state of the application.  Each component would need to inherit a set of basic parameters that would be common to all components of that type.  For example, a wall component would have required placement detail parameters (referred to as props in React) such as wall start and stop data and thickness and type data.  The framework can also impose what type of children a particular component can have.  This is enforceable by the React PropTypes library: [https://reactjs.org/docs/typechecking-with-proptypes.html](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
 When using components generated from a specific CAD program, an add-on will need to be created for that program that can open the file, update the parameters and save out the resulting asset for the framework.
 
-I’ve thought about a couple of ways that the components can be rendered.  Ideally I think a custom BIM renderer could be built that is aware of a library of basic BIM primitive components and 3D shapes.  The renderer would construct these models from the output of the application.  For example, a very simple model might look like this:
+There are at least a couple of ways that the components can be rendered.  Ideally a custom BIM renderer could be built that is aware of a library of basic BIM primitive components and 3D shapes.  The renderer would construct these models from the output of the application.  For example, a very simple model might look like this:
 
 
 ```
@@ -68,7 +68,6 @@ function MyBuilding(props) {
 export default MyBuilding
 ```
 
-
 The renderer would then assemble the structure from the output.  Hypar may be a great starting point for this. 
 
 [https://hypar.io/](https://hypar.io/) \
@@ -90,24 +89,21 @@ The XML file would then be read as a secondary step in by a CAD application such
 
 This approach seems the most doable for a hackathon.  However, I think the lack of a custom renderer limits its capabilities and would require each CAD implementation create its own renderer.
 
-
 ## Domain Specific Challenges
 
 **Solving Geometric Constraints**:  The relationship between hierarchical components are often driven by geometric constraints that are difficult to solve with just vanilla programmatic logic.  For example, think about the pieces of a stair guard railing that must adapt to varying stair rises and runs.  The top of the guardrail must be at least 42”, the spacing between the posts must be no greater than 48” and the pickets must be kept at 3 ½”.  To model each piece of the guardrail we must understand the overall rise and run of the entire guardrail so that we can derive the parameters of each individual piece.  This could all be done by solving a series of geometric and trigonometric equations.  However, it is much easier to sketch the layout in a 2D (or possibly 3D) parametric sketch program that enforces the constraints we want to keep and derive the parameters we are interested in.  The leading CAD programs have these sketch tools baked in and there are a few open source alternatives such as FreeCAD ([https://www.freecadweb.org/](https://www.freecadweb.org/)) and GeoSolver ([http://geosolver.sourceforge.net/](http://geosolver.sourceforge.net/)).  A long term solution may include the adoption of a constraint solver into the system so that these problems could be solved within the framework. However, a viable alternative is to use layout sketches in the CAD program of choice and an API hook that updates the required layout sketch and reports back on the parameters of interest.
 
 **Part Numbering:**  Every unique component should be given a part number that identifies it.  Part numbering should be based on the unique parameters that define it completely.
 
-**3D Positioning of Objects: ** A universally understood method for defining the project coordinate system and origin, coordinate system of each individual component and a method to define the relationship between the two will be necessary.  Different types of objects may require different types of positioning constraints that are inherent to their object types.  For example, a floor slab will probably always be relative to the plane of an elevation.  
+**3D Positioning of Objects:** A universally understood method for defining the project coordinate system and origin, coordinate system of each individual component and a method to define the relationship between the two will be necessary.  Different types of objects may require different types of positioning constraints that are inherent to their object types.  For example, a floor slab will probably always be relative to the plane of an elevation.  
 
 **IFC Interoperability:**  It will be important that constructed objects maintain all of the important meta data for interoperability with IFC standards.
-
 
 ## What is the Hackathon goal?
 
 It is obviously not realistic to build this entire framework in a few weeks time.  However, I think a reasonable goal would be to demonstrate the ability to compose a very basic building or building component utilizing a few basic components with react/JSX and then have an application that could read in the layout and compose and render it.  The state of the application should be easily updated and the resulting output re-rendered quickly.
 
 Another goal is to lay out some ‘to-dos’ for further developments and establish a GitHub repo where ongoing work could be performed. 
-
 
 ## Who can help with this?
 
