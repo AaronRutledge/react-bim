@@ -4,7 +4,7 @@ import ForgeViewer from 'react-forge-viewer';
 import './App.css';
 
 
-class App extends Component {
+class App extends React.Component {
 
   constructor(props){
     super(props);
@@ -48,8 +48,8 @@ class App extends Component {
     response that looks something like the following...
     */
     return {
-      access_token:<<INSERT_YOUR_FORGE_ACCESS_TOKEN>>,
-      expires_in: <<INSERT_TOKEN_EXPIRATION>>,
+      access_token:"token here",
+      expires_in: "expiration here",
       token_type: "Bearer"
     };
   }
@@ -71,7 +71,7 @@ class App extends Component {
       <div className="App">
         <ForgeViewer
           version="6.0"
-          urn=<<INSERT_YOUR_FORGE_DOCUMENT_URN>>
+          urn="urn url"
           view={this.state.view}
           headless={false}
           onViewerError={this.handleViewerError.bind(this)}
