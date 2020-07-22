@@ -1,0 +1,232 @@
+{
+    "Building": {
+       "ProjectInformation": {
+          "Units": {
+             "IsMetric": "true"
+          },
+          "Levels": {
+             "Level": [
+                {
+                   "Elevation": "0",
+                   "Name": "Base"
+                },
+                {
+                   "Elevation": "3.7",
+                   "Name": "Level 1"
+                },
+                {
+                   "Elevation": "7.4",
+                   "Name": "Level 2"
+                },
+                {
+                   "Elevation": "11.1",
+                   "Name": "Level 3"
+                },
+                {
+                   "Elevation": "14.8",
+                   "Name": "Level 4"
+                }
+             ]
+          }
+       },
+       "Floors": {
+          "Floor": [
+             {
+                "ComponentName": "Generic8inFloor",
+                "BoundryPoints": {
+                   "Point": [
+                      {
+                         "X": "0",
+                         "Y": "0",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "0",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "0",
+                         "Z": "8"
+                      },
+                      {
+                         "X": "0",
+                         "Y": "0",
+                         "Z": "8"
+                      }
+                   ]
+                }
+             },
+             {
+                "ComponentName": "Generic8inFloor",
+                "BoundryPoints": {
+                   "Point": [
+                      {
+                         "X": "0",
+                         "Y": "3.7",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "3.7",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "0",
+                         "Z": "8"
+                      },
+                      {
+                         "X": "0",
+                         "Y": "3.7",
+                         "Z": "8"
+                      }
+                   ]
+                }
+             },
+             {
+                "ComponentName": "Generic8inFloor",
+                "BoundryPoints": {
+                   "Point": [
+                      {
+                         "X": "0",
+                         "Y": "7.4",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "7.4",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "7.4",
+                         "Z": "8"
+                      },
+                      {
+                         "X": "0",
+                         "Y": "7.4",
+                         "Z": "8"
+                      }
+                   ]
+                }
+             },
+             {
+                "ComponentName": "Generic8inFloor",
+                "BoundryPoints": {
+                   "Point": [
+                      {
+                         "X": "0",
+                         "Y": "11.1",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "0",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "11.1",
+                         "Z": "8"
+                      },
+                      {
+                         "X": "0",
+                         "Y": "11.1",
+                         "Z": "8"
+                      }
+                   ]
+                }
+             },
+             {
+                "ComponentName": "Generic8inFloor",
+                "BoundryPoints": {
+                   "Point": [
+                      {
+                         "X": "0",
+                         "Y": "14.8",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "14.8",
+                         "Z": "0"
+                      },
+                      {
+                         "X": "8",
+                         "Y": "14.8",
+                         "Z": "8"
+                      },
+                      {
+                         "X": "0",
+                         "Y": "14.8",
+                         "Z": "8"
+                      }
+                   ]
+                }
+             }
+          ]
+       },
+       "Walls": {
+          "Wall": [
+             {
+                "ComponentName": "Generic6inWall",
+                "StartPoint": {
+                   "X": "0",
+                   "Y": "0",
+                   "Z": "0"
+                },
+                "EndPoint": {
+                   "X": "8",
+                   "Y": "0",
+                   "Z": "0"
+                },
+                "Height": "3.7"
+             },
+             {
+                "ComponentName": "Generic6inWall",
+                "StartPoint": {
+                   "X": "8",
+                   "Y": "0",
+                   "Z": "0"
+                },
+                "EndPoint": {
+                   "X": "8",
+                   "Y": "0",
+                   "Z": "8"
+                },
+                "Height": "3.7"
+             },
+             {
+                "ComponentName": "Generic6inWall",
+                "StartPoint": {
+                   "X": "8",
+                   "Y": "0",
+                   "Z": "8"
+                },
+                "EndPoint": {
+                   "X": "0",
+                   "Y": "0",
+                   "Z": "8"
+                },
+                "Height": "3.7"
+             },
+             {
+                "ComponentName": "Generic6inWall",
+                "StartPoint": {
+                   "X": "0",
+                   "Y": "0",
+                   "Z": "8"
+                },
+                "EndPoint": {
+                   "X": "0",
+                   "Y": "0",
+                   "Z": "0"
+                },
+                "Height": "3.7"
+             }
+          ]
+       }
+    }
+ }
