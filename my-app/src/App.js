@@ -2,6 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import ForgeViewer from 'react-forge-viewer';
 import './App.css';
+import Form from './Form'
+
+// Helper styles for demo
+import "./helper.css";
+import { DisplayFormikState } from "./helper";
+import { render } from "react-dom";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 
 class App extends React.Component {
@@ -69,6 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Form/>
         <ForgeViewer
           version="6.0"
           urn="urn url"
