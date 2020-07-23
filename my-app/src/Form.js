@@ -1,10 +1,13 @@
 // Helper styles for demo
 import "./helper.css";
 import { DisplayFormikState } from "./helper";
+import {buildingXML} from "./Building";
 
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+console.log("here is some XML", buildingXML);
 
 const Form = () => (
   <div className="app">
