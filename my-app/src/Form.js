@@ -6,11 +6,11 @@ import ConfiguredBuilding from "./Building";
 
 import React, { useState } from "react";
 import ReactDomServer from "react-dom/server";
-import { Formik } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import format from "xml-formatter";
-import Accordion from 'react-collapsy';
-import 'react-collapsy/lib/index.css'
+import Accordion from "react-collapsy";
+import "react-collapsy/lib/index.css";
 
 //console.log("here is some XML", buildingXML);
 
@@ -20,35 +20,26 @@ function Form() {
     <div className="app">
       <Formik
         initialValues={{
-          floors: "2",
-          floorHeight: "3000",
-          buildingWidth: "10000",
-          buildingLength: "10000",
-          roomsPerFloor: "5"
+          floors: "",
+          floorHeight: "",
+          buildingWidth: "",
+          buildingLength: "",
+          roomsPerFloor: "",
         }}
-        onSubmit={async values => {
-          await new Promise(resolve => setTimeout(resolve, 500));
+        onSubmit={async (values) => {
+          await new Promise((resolve) => setTimeout(resolve, 500));
           alert(JSON.stringify(values, null, 2));
-          setXmlOutput(ReactDomServer.renderToStaticMarkup(<ConfiguredBuilding formData={values} />))
+          setXmlOutput(ReactDomServer.renderToStaticMarkup(<ConfiguredBuilding formData={values} />));
         }}
         validationSchema={Yup.object().shape({
-          floors: Yup.number()
-            .required("Required")
-            .min(1)
-            .max(50),
-          floorHeight: Yup.number()
-            .required("Required"),
-          buildingWidth: Yup.number()
-            .required("Required"),
-          buildingLength: Yup.number()
-            .required("Required"),
-          roomsPerFloor: Yup.number()
-            .required("Required")
-            .min(1)
-            .max(100)
+          floors: Yup.number().required("Number of Floors is Required").min(1).max(50),
+          floorHeight: Yup.number().required("Floor to Floor Height is Required").min(2000).max(5000),
+          buildingWidth: Yup.number().required("Building Width is Required").min(2000).max(50000),
+          buildingLength: Yup.number().required("Building Length is Required").min(2000).max(50000),
+          roomsPerFloor: Yup.number().required("Rooms Per Floor is Required").min(1).max(100),
         })}
       >
-        {props => {
+        {(props) => {
           const {
             values,
             touched,
@@ -58,13 +49,21 @@ function Form() {
             handleChange,
             handleBlur,
             handleSubmit,
-            handleReset
+            handleReset,
           } = props;
           return (
             <form onSubmit={handleSubmit}>
               <label htmlFor="floors" style={{ display: "block" }}>
+                Building Units
+              </label>
+              <select label="Building Units" name="buildingUnits">
+                <option value="metric">Metric</option>
+                <option value="imperial">Imperial</option>
+              </select>
+
+              <label htmlFor="floors" style={{ display: "block" }}>
                 Number of Floors
-            </label>
+              </label>
               <input
                 id="floors"
                 placeholder="Enter Number of Floors"
@@ -72,19 +71,13 @@ function Form() {
                 value={values.number}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={
-                  errors.floors && touched.floors
-                    ? "text-input error"
-                    : "text-input"
-                }
+                className={errors.floors && touched.floors ? "text-input error" : "text-input"}
               />
-              {errors.number && touched.number && (
-                <div className="input-feedback">{errors.number}</div>
-              )}
+              {errors.floors && touched.floors && <div className="input-feedback">{errors.floors}</div>}
 
               <label htmlFor="floorHeight" style={{ display: "block" }}>
                 Floor to Floor Height
-            </label>
+              </label>
               <input
                 id="floorHeight"
                 placeholder="Enter Floor to Floor Height"
@@ -92,19 +85,13 @@ function Form() {
                 value={values.number}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={
-                  errors.floorHeight && touched.floorHeight
-                    ? "text-input error"
-                    : "text-input"
-                }
+                className={errors.floorHeight && touched.floorHeight ? "text-input error" : "text-input"}
               />
-              {errors.number && touched.number && (
-                <div className="input-feedback">{errors.number}</div>
-              )}
+              {errors.floorHeight && touched.floorHeight && <div className="input-feedback">{errors.floorHeight}</div>}
 
               <label htmlFor="buildingWidth" style={{ display: "block" }}>
                 Building Width
-            </label>
+              </label>
               <input
                 id="buildingWidth"
                 placeholder="Building Width"
@@ -112,19 +99,15 @@ function Form() {
                 value={values.number}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={
-                  errors.buildingWidth && touched.buildingWidth
-                    ? "text-input error"
-                    : "text-input"
-                }
+                className={errors.buildingWidth && touched.buildingWidth ? "text-input error" : "text-input"}
               />
-              {errors.number && touched.number && (
-                <div className="input-feedback">{errors.number}</div>
+              {errors.buildingWidth && touched.buildingWidth && (
+                <div className="input-feedback">{errors.buildingWidth}</div>
               )}
 
               <label htmlFor="buildingLength" style={{ display: "block" }}>
                 Building Length
-            </label>
+              </label>
               <input
                 id="buildingLength"
                 placeholder="Building Length"
@@ -132,19 +115,15 @@ function Form() {
                 value={values.number}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={
-                  errors.buildingLength && touched.buildingLength
-                    ? "text-input error"
-                    : "text-input"
-                }
+                className={errors.buildingLength && touched.buildingLength ? "text-input error" : "text-input"}
               />
-              {errors.number && touched.number && (
-                <div className="input-feedback">{errors.number}</div>
+              {errors.buildingLength && touched.buildingLength && (
+                <div className="input-feedback">{errors.buildingLength}</div>
               )}
 
               <label htmlFor="roomsPerFloor" style={{ display: "block" }}>
                 Rooms Per Floor
-            </label>
+              </label>
               <input
                 id="roomsPerFloor"
                 placeholder="Rooms Per Floor"
@@ -152,31 +131,20 @@ function Form() {
                 value={values.number}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={
-                  errors.roomsPerFloor && touched.roomsPerFloor
-                    ? "text-input error"
-                    : "text-input"
-                }
+                className={errors.roomsPerFloor && touched.roomsPerFloor ? "text-input error" : "text-input"}
               />
-              {errors.number && touched.number && (
-                <div className="input-feedback">{errors.number}</div>
+              {errors.roomsPerFloor && touched.roomsPerFloor && (
+                <div className="input-feedback">{errors.roomsPerFloor}</div>
               )}
 
-              <button
-                type="button"
-                className="outline"
-                onClick={handleReset}
-                disabled={!dirty || isSubmitting}
-              >
+              <button type="button" className="outline" onClick={handleReset} disabled={!dirty || isSubmitting}>
                 Reset
-            </button>
+              </button>
               <button type="submit" disabled={isSubmitting}>
                 Submit
-            </button>
-              <Accordion title='Generated Building XML'>
-                <pre>
-                  {format(xmlOutput)}
-                </pre>
+              </button>
+              <Accordion title="Generated Building XML">
+                <pre>{format(xmlOutput)}</pre>
               </Accordion>
               {/* <DisplayFormikState {...props} /> */}
             </form>
@@ -184,8 +152,7 @@ function Form() {
         }}
       </Formik>
     </div>
-  )
+  );
 }
-
 
 export default Form;
