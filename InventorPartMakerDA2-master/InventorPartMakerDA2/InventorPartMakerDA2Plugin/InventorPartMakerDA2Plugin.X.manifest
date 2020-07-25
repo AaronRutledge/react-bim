@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity name="InventorPartMakerDA2Plugin" version="1.0.0.0"></assemblyIdentity>
+  <clrClass clsid="{66633c1a-d8cf-4c5c-9a95-3bd6ddead994}" progid="InventorPartMakerDA2Plugin.PluginServer" threadingModel="Both" name="InventorPartMakerDA2Plugin.PluginServer"></clrClass>
+  <file name="InventorPartMakerDA2Plugin.dll" hashalg="SHA1"></file>
+</assembly>
