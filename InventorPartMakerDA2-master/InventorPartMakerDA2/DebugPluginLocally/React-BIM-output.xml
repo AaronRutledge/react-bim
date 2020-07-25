@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<dataset>
+    <i-part-member>
+        <Member>Wall_1</Member>
+        <PartNumber>Wall_1_1</PartNumber>
+        <width>2000</width>
+        <height>500</height>
+        <length>3000</length>
+    </i-part-member>
+        <i-part-member>
+        <Member>Wall_2</Member>
+        <PartNumber>Wall_2_2</PartNumber>
+        <width>4000</width>
+        <height>550</height>
+        <length>5000</length>
+    </i-part-member>
+        <i-part-member>
+        <Member>Wall_3</Member>
+        <PartNumber>Wall_3_3</PartNumber>
+        <width>1500</width>
+        <height>300</height>
+        <length>2000</length>
+    </i-part-member>
+</dataset>    
